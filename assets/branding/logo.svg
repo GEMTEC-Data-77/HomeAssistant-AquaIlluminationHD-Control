@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 160" width="640" height="160">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1FD1E0"/>
+      <stop offset="45%" stop-color="#0B6E93"/>
+      <stop offset="100%" stop-color="#041526"/>
+    </linearGradient>
+    <linearGradient id="fixtureGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#D6EFF6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- mark, reused from icon.svg, scaled/translated into a 160x160 slot -->
+  <g transform="translate(0,0) scale(0.625)">
+    <rect x="4" y="4" width="248" height="248" rx="64" fill="url(#bgGrad)"/>
+    <rect x="4" y="4" width="248" height="248" rx="64" fill="none" stroke="#FFFFFF" stroke-opacity="0.10" stroke-width="2"/>
+    <path d="M 96 62 L 160 62 L 214 200 L 42 200 Z" fill="#FFFFFF" opacity="0.14"/>
+    <path d="M 106 62 L 150 62 L 184 194 L 72 194 Z" fill="#FFFFFF" opacity="0.22"/>
+    <rect x="86" y="44" width="84" height="18" rx="9" fill="url(#fixtureGrad)"/>
+    <rect x="94" y="47" width="68" height="5" rx="2.5" fill="#FFFFFF" opacity="0.65"/>
+    <path d="M 0 196 Q 32 186 64 196 T 128 196 T 192 196 T 256 196 L 256 256 L 0 256 Z" fill="#BDEFFB" opacity="0.30"/>
+    <path d="M 0 210 Q 36 202 72 210 T 144 210 T 216 210 T 256 208 L 256 256 L 0 256 Z" fill="#7FDCEF" opacity="0.22"/>
+    <circle cx="96" cy="226" r="5.5" fill="#FFFFFF" opacity="0.55"/>
+    <circle cx="118" cy="238" r="3.5" fill="#FFFFFF" opacity="0.45"/>
+    <circle cx="150" cy="230" r="4.5" fill="#FFFFFF" opacity="0.5"/>
+  </g>
+
+  <!-- wordmark -->
+  <text x="182" y="90" font-family="DejaVu Sans" font-weight="bold" font-size="46" fill="#0A3A4D">AquaIllumination</text>
+  <text x="184" y="118" font-family="DejaVu Sans" font-weight="normal" font-size="21" fill="#4E7887">for Home Assistant</text>
+</svg>

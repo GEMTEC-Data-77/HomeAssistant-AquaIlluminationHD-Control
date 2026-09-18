@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1FD1E0"/>
+      <stop offset="45%" stop-color="#0B6E93"/>
+      <stop offset="100%" stop-color="#041526"/>
+    </linearGradient>
+    <linearGradient id="fixtureGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#D6EFF6"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="300" rx="36" fill="url(#bgGrad)"/>
+  <rect x="1" y="1" width="1198" height="298" rx="35" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="2"/>
+
+  <!-- light cones from a fixture on the left -->
+  <path d="M 108 58 L 228 58 L 300 232 L 36 232 Z" fill="#FFFFFF" opacity="0.12"/>
+  <path d="M 128 58 L 208 58 L 258 220 L 78 220 Z" fill="#FFFFFF" opacity="0.20"/>
+
+  <!-- fixture bar -->
+  <rect x="98" y="38" width="140" height="24" rx="12" fill="url(#fixtureGrad)"/>
+  <rect x="112" y="43" width="112" height="7" rx="3.5" fill="#FFFFFF" opacity="0.65"/>
+
+  <!-- water surface spanning the banner -->
+  <path d="M 0 234 Q 75 220 150 234 T 300 234 T 450 234 T 600 234 T 750 234 T 900 234 T 1050 234 T 1200 232 L 1200 300 L 0 300 Z" fill="#BDEFFB" opacity="0.22"/>
+  <path d="M 0 252 Q 80 242 160 252 T 320 252 T 480 252 T 640 252 T 800 252 T 960 252 T 1120 252 T 1200 250 L 1200 300 L 0 300 Z" fill="#7FDCEF" opacity="0.16"/>
+
+  <!-- bubbles -->
+  <circle cx="170" cy="256" r="6" fill="#FFFFFF" opacity="0.4"/>
+  <circle cx="196" cy="270" r="4" fill="#FFFFFF" opacity="0.32"/>
+  <circle cx="228" cy="260" r="5" fill="#FFFFFF" opacity="0.36"/>
+
+  <!-- wordmark -->
+  <text x="352" y="148" font-family="DejaVu Sans" font-weight="bold" font-size="66" fill="#FFFFFF">AquaIllumination</text>
+  <text x="354" y="188" font-family="DejaVu Sans" font-weight="normal" font-size="26" fill="#BFEFF7">Unofficial Home Assistant integration for Hydra / Prime HD lights</text>
+</svg>

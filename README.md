@@ -1,3 +1,5 @@
+![AquaIllumination for Home Assistant](assets/branding/banner.png)
+
 # AquaIllumination Home Assistant integration (Hydra 52 HD)
 
 A small, self-contained Home Assistant custom integration for controlling
@@ -265,7 +267,10 @@ custom_components/aquaillumination/
 ├── switch.py                # per-fixture on-device-schedule toggle
 ├── manifest.json
 ├── strings.json              # UI text for the config flow
-└── translations/en.json
+├── translations/en.json
+├── icon.png / icon@2x.png     # see "Branding" below
+└── logo.png
+assets/branding/                 # source artwork - see "Branding" below
 .github/workflows/validate.yml   # CI: hassfest + HACS structure checks
 hacs.json                          # lets this be added as a HACS custom repo
 LICENSE
@@ -286,6 +291,30 @@ groups" above.
 - Home Assistant logs (Settings > System > Logs, or `home-assistant.log`)
   will show `aquaillumination` errors if a light stops responding -
   usually a changed IP address or the light being power-cycled.
+
+## Branding
+
+<img src="assets/branding/logo.png" alt="AquaIllumination for Home Assistant logo" width="320">
+
+Original artwork (not AquaIllumination's actual branding - this is an
+unofficial project) lives under `assets/branding/`:
+
+```
+assets/branding/
+├── icon.svg / icon.png / icon@2x.png     # square mark, 256px / 512px
+├── logo.svg / logo.png / logo@2x.png     # horizontal lockup, for READMEs etc.
+└── banner.svg / banner.png / banner@2x.png  # wide hero banner (top of this file)
+```
+
+The `.svg` files are the source - edit those and re-render if you want to
+tweak colors or layout (any SVG-to-PNG tool works; sizes used here are
+256/512 for the icon and matching 2x variants for the others). `icon.png`
+and `icon@2x.png` are also copied into `custom_components/aquaillumination/`
+since that's the size/format [home-assistant/brands](https://github.com/home-assistant/brands)
+expects if you ever want this integration's icon to show up in Home
+Assistant's own "Add Integration" picker - that requires a separate pull
+request to that repository (not this one) following their contribution
+guide; it's optional and not needed for the integration to work.
 
 ## Contributing / license
 
