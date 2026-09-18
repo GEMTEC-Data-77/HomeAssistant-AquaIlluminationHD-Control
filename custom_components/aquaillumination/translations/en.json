@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Add an AquaIllumination light",
-        "description": "Add one fixture at a time — run this again for each of your Hydra 52 HDs. Enter that fixture's local IP address (find it in the myAI app under the light's Wi-Fi settings), a short name to identify it, and the password you set for it (the same one its own web page at http://<ip>/login.html asks for).",
+        "description": "Add one fixture at a time — run this again for each of your Hydra 52 HDs. Enter that fixture's local IP address (find it in the myAI app under the light's Wi-Fi settings), a short name to identify it, and the password you set for it (the same one its own login page, at that IP address, asks for).",
         "data": {
           "host": "Host (IP address)",
           "name": "Name",
@@ -13,7 +13,7 @@
     },
     "error": {
       "cannot_connect": "Could not connect to a light at that address. Check the IP address and make sure it's powered on and on the same network as Home Assistant.",
-      "invalid_auth": "That password was rejected by the light. Double check it against the one that unlocks http://<ip>/login.html for this fixture."
+      "invalid_auth": "That password was rejected by the light. Double check it against the one that unlocks this fixture's own login page in a browser."
     },
     "abort": {
       "already_configured": "This light is already configured."

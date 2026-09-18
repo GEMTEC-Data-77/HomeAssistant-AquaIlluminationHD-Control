@@ -268,9 +268,8 @@ custom_components/aquaillumination/
 ├── manifest.json
 ├── strings.json              # UI text for the config flow
 ├── translations/en.json
-├── icon.png / icon@2x.png     # see "Branding" below
-└── logo.png
-assets/branding/                 # source artwork - see "Branding" below
+└── brand/                      # icon.png, icon@2x.png, logo.png, logo@2x.png
+assets/branding/                 # source artwork (.svg) - see "Branding" below
 .github/workflows/validate.yml   # CI: hassfest + HACS structure checks
 hacs.json                          # lets this be added as a HACS custom repo
 LICENSE
@@ -308,13 +307,30 @@ assets/branding/
 
 The `.svg` files are the source - edit those and re-render if you want to
 tweak colors or layout (any SVG-to-PNG tool works; sizes used here are
-256/512 for the icon and matching 2x variants for the others). `icon.png`
-and `icon@2x.png` are also copied into `custom_components/aquaillumination/`
-since that's the size/format [home-assistant/brands](https://github.com/home-assistant/brands)
-expects if you ever want this integration's icon to show up in Home
-Assistant's own "Add Integration" picker - that requires a separate pull
-request to that repository (not this one) following their contribution
-guide; it's optional and not needed for the integration to work.
+256/512 for the icon and matching 2x variants for the others). Copies also
+live at `custom_components/aquaillumination/brand/` (`icon.png`,
+`icon@2x.png`, `logo.png`, `logo@2x.png`) - that specific path is what the
+[HACS validation action](https://www.hacs.xyz/docs/publish/integration/)
+checks for as a local brand-assets fallback, so this repo passes CI
+without needing a pull request to [home-assistant/brands](https://github.com/home-assistant/brands).
+Submitting there is still possible later if you want the icon to show up
+in Home Assistant's own "Add Integration" picker, but it's optional.
+
+### Passing CI (hassfest / HACS validation)
+
+Two gotchas that bit this repo's first run of `.github/workflows/validate.yml`,
+in case they come up again after an edit:
+
+- **hassfest fails on HTML-looking text in `strings.json`/`translations/en.json`.**
+  Anything that looks like a tag - e.g. writing a placeholder as
+  `http://<ip>/login.html` - gets flagged as "should not contain HTML".
+  Spell placeholders out in words instead (`"that fixture's own login
+  page, at its IP address, ..."`).
+- **HACS validation fails with "no valid topics"** if the GitHub repo has
+  no topics set. This is a repo setting, not a file, so it can't be fixed
+  from within this codebase: go to the repo's main page, click the gear
+  icon next to **About**, and add a few topics (e.g. `home-assistant`,
+  `hacs-integration`, `aquarium`, `aquaillumination`), then save.
 
 ## Contributing / license
 
