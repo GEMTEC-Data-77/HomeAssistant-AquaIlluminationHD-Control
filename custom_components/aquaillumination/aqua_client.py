@@ -15,10 +15,17 @@ Known endpoints (plain HTTP, no port other than 80):
                                     /login.html form)
     GET  /api/identity          -> serial number, firmware, product name;
                                     does not require a logged-in session
-    GET  /api/colors            -> {channel_name: percent_0_to_100, ...};
-                                    requires a logged-in session
-    POST /api/colors            -> body {channel_name: percent}, sets one
-                                    or more channels at once
+    GET  /api/colors            -> {channel_name: value_0_to_1000, ...};
+                                    requires a logged-in session. Confirmed
+                                    against a real fixture: a channel sitting
+                                    at 66% reads back as 664 - i.e. this is
+                                    tenths of a percent (0-1000), not a plain
+                                    0-100 percent as earlier reverse-engineering
+                                    write-ups (and an earlier version of this
+                                    file) assumed.
+    POST /api/colors            -> body {channel_name: value_0_to_1000}, sets
+                                    one or more channels at once, same scale
+                                    as the GET response
     GET  /api/schedule/enable   -> {"enable": bool}
     PUT  /api/schedule/enable   -> body {"enable": bool}
 
@@ -149,18 +156,28 @@ class AquaIlluminationClient:
         return await self._request("GET", "/identity")
 
     async def get_colors(self) -> dict[str, float]:
-        """Return {channel_name: percent_brightness} for this fixture."""
+        """Return {channel_name: percent_brightness} for this fixture.
+
+        The device reports each channel as a 0-1000 value (tenths of a
+        percent); this divides by 10 so everything above this client deals
+        in plain 0-100 percent, matching set_color()'s input.
+        """
         data = await self._request("GET", "/colors")
         return {
-            key: float(value)
+            key: float(value) / 10.0
             for key, value in data.items()
             if key != "response_code"
         }
 
     async def set_color(self, channel: str, percent: float) -> None:
-        """Set a single channel's brightness, as a 0-100 percent value."""
+        """Set a single channel's brightness, as a 0-100 percent value.
+
+        Converted to the device's native 0-1000 scale (tenths of a percent)
+        before sending - see get_colors().
+        """
         percent = max(0.0, min(100.0, percent))
-        await self._request("POST", "/colors", {channel: percent})
+        raw_value = round(percent * 10)
+        await self._request("POST", "/colors", {channel: raw_value})
 
     async def get_schedule_enabled(self) -> bool:
         """Return whether the fixture's own on-device schedule is running."""
