@@ -1,6 +1,7 @@
 {
   "domain": "aquaillumination",
   "name": "AquaIllumination",
+  "categories": ["lighting", "pets"],
   "codeowners": ["@GEMTEC-Data-77"],
   "config_flow": true,
   "documentation": "https://github.com/GEMTEC-Data-77/HomeAssistant-AquaIlluminationHD-Control",
